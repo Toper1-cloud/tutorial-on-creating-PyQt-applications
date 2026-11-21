@@ -1,5 +1,5 @@
 import sys
-from PyQt6.QtWidgets import (QApplication, QLabel, QVBoxLayout, QWidget)
+from PyQt6.QtWidgets import (QApplication, QLabel, QVBoxLayout, QHBoxLayout, QWidget)
 
 
 class MainWindow(QWidget):
@@ -11,12 +11,12 @@ class MainWindow(QWidget):
         self.setWindowTitle("Окно на PyQt6")
         self.resize(500, 350)
 
-        layout = QVBoxLayout(self)
-        label = QLabel("Привет")
+        layout = QHBoxLayout(self)
+        label = QLabel("Хай!")
         layout.addWidget(label)
 
-        label2 = QLabel("Новый текст")
-        label3 = QLabel("<b>Жирный текст</b> и <i>курсив</i>")
+        label2 = QLabel("new")
+        label3 = QLabel("Пример")
 
         layout.addWidget(label2)
         layout.addWidget(label3)
