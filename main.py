@@ -1,6 +1,5 @@
 import sys
-from PyQt6.QtWidgets import (QApplication, QLabel, QVBoxLayout, QHBoxLayout, QWidget)
-
+from PyQt6.QtWidgets import (QApplication, QHBoxLayout, QLineEdit, QVBoxLayout, QWidget)
 
 class MainWindow(QWidget):
     def __init__(self):
@@ -8,19 +7,28 @@ class MainWindow(QWidget):
         self.init_ui()
 
     def init_ui(self):
-        self.setWindowTitle("Окно на PyQt6")
+        self.setWindowTitle("Окно с QLineEdit")
         self.resize(500, 350)
+        layout1 = QVBoxLayout(self)
 
-        layout = QHBoxLayout(self)
-        label = QLabel("Хай!")
-        layout.addWidget(label)
+        inputs_layout = QHBoxLayout()
 
-        label2 = QLabel("new")
-        label3 = QLabel("Пример")
+        self.name_input = QLineEdit(self)
+        self.name_input.setPlaceholderText("Введите ваше имя...")
 
-        layout.addWidget(label2)
-        layout.addWidget(label3)
+        self.password_input = QLineEdit(self)
+        self.password_input.setPlaceholderText("Введите пароль...")
+        self.password_input.setEchoMode(QLineEdit.EchoMode.Password)
 
+        inputs_layout.addWidget(self.name_input)
+        inputs_layout.addWidget(self.password_input)
+
+        layout1.addLayout(inputs_layout)
+
+    def get_inputs(self):
+        user_input = self.name_input.text()
+        password_input = self.password_input.text()
+        return user_input, password_input
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
